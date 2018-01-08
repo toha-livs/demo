@@ -1,0 +1,54 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+    <div class="container-fluid static_txt">
+        <div class="row">
+            <div
+                 class="col-md-2 ">
+             Выбирите правильный ответ
+            </div>
+            <div
+                class="col-md-8">
+             Кто вам больше нравится?
+          </div>
+          <div
+                class="col-md-2">
+             <strong>проголосовало:</strong><br>
+              пони - {{ pony_count }}<br>
+              бомж - {{ homeless_count }}<br>
+              лексус - {{ lexus_count }}<br>
+          </div>
+        </div>
+    </div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-10 offset-2">
+                <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="pony">
+                        Розовая пони
+                      </label>
+                </div>
+                <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="homeless">
+                        Бомж
+                      </label>
+                </div>
+                <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="lexus">
+                        Новый лексус
+                      </label>
+                </div>
+                <button class="btn btn-warning offset-3" type="submit">Голосовать</button>
+            </div>
+        </div>
+    </form>
+<div/>
+<footer class="info">
+    <h5>&copy все права защищены<small>2018</small></h5>
+</footer>
+{% endblock %}

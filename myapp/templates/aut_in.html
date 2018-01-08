@@ -1,0 +1,37 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 offset-9 control-label">Ввeдите Имя:</label>
+        <div class="col-sm-3 offset-9">
+          <input type="text" class="form-control" id="inputEmail3" name="inputEmail3" placeholder="или никнейм">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class=" col-sm-2 offset-9">
+          <button type="submit" class="btn btn-warning">поехали&#9658</button>
+        </div>
+      </div>
+    </form>
+</form>
+<footer class="info">
+    <h5>&copy все права защищены<small>2018</small></h5>
+</footer>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

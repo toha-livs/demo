@@ -1,0 +1,50 @@
+{% block content %}
+    <div class="container-fluid static_txt">
+        <div class="row">
+            <div
+                 class="col-md-2 ">
+             Представте ситуацию, и выбирите правильный ответ
+            </div>
+            <div
+                class="col-md-8">
+             Вы идете по набережной ,середина лета , пекучее солнце ,морской бриз, вдруг замечаете двух мальчиков одетых в рваные грязные вещи, они они смещаются в вашу сторону ускоряя шаг
+          </div>
+          <div
+                class="col-md-2">
+             <strong>Имя:</strong> {{ name }}
+          </div>
+        </div>
+    </div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-10 offset-2">
+                        <p><em>ваши действия?</em></p>
+                <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" {% if selected_value == 'option1' %}checked{% endif %}>
+                        убежать
+                      </label>
+                </div>
+                <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" {% if selected_value == 'option2' %}checked{% endif %}>
+                        дать денег
+                      </label>
+                </div>
+                <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" {% if selected_value == 'option3' %}checked{% endif %}>
+                        агресивно закрчать в сторону ребят
+                      </label>
+                </div>
+        <button class="btn btn-warning offset-3" type="submit">Далее&#9658</button>
+            </div>
+        </div>
+    </form>
+<div/>
+<footer class="info">
+    <h5>&copy все права защищены<small>2018</small></h5>
+</footer>
+{% endblock %}

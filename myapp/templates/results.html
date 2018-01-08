@@ -1,0 +1,32 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container-fluid static_txt">
+        <div class="row">
+                <div
+                     class="col-md-2 ">
+                </div>
+                <div
+                    class="col-md-8">
+                    готов? нажимай !
+              </div>
+              <div
+                    class="col-md-2">
+                  <input class="btn btn-default" type="button" name="bt_res" value="результат">
+              </div>
+        </div>
+    </div>
+</form>
+<div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-2">
+                <p><em></em></p>
+            </div>
+        </div>
+</div>
+<footer class="info">
+    <h5>&copy все права защищены<small>2018</small></h5>
+</footer>
+{% endblock %}

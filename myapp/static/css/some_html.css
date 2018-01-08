@@ -1,0 +1,25 @@
+
+{% load staticfiles %}
+body {
+    background-color:	#5F9EA0;
+}
+footer{
+    padding: 10px 20px;
+    background: #FFDEAD;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+    width: 100%;
+    color:grey;
+}
+footer h5{
+    margin: 0;
+}
+footer h5 small{
+    float: right;
+    padding-top: 3px;
+}
+.static_txt{
+    background-color:#FFDEAD;
+}
