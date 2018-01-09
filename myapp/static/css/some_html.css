@@ -23,3 +23,13 @@ footer h5 small{
 .static_txt{
     background-color:#FFDEAD;
 }
+#exampleInputPassword1{
+    background-color:#FFDEAD;
+}
+#exampleInputEmail1{
+    background-color:#FFDEAD;
+}
+#stat_txt{
+    border:1xp solid transparent;
+    border-radius:10xp;
+}

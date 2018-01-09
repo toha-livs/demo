@@ -24,7 +24,11 @@ def first(request):
     if not too_id:
         return redirect('index')
     too = Too.objects.get(id=too_id)
-    if request.method == 'POST':
+    if request.method == 'GET':
+        rname = too.name
+        context = {'name': rname}
+        return render(request, 'homePage.html', context)
+    elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
         if radio == 'option1':
             radio = 4
@@ -34,8 +38,6 @@ def first(request):
             radio = 2
         too.first = radio
         too.save()
-        rname = too.name
-        context = {'name': rname}
         return redirect('second')
     return render(request, 'homePage.html')
 
@@ -48,7 +50,11 @@ def second(request):
     if not too_id:
         return redirect('index')
     too = Too.objects.get(id=too_id)
-    if request.method == 'POST':
+    if request.method == 'GET':
+        rname = too.name
+        context = {'name': rname}
+        return render(request, 'too_page.html', context)
+    elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
         if radio == 'options1':
             radio = 1
