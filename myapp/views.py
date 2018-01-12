@@ -1,10 +1,15 @@
+from django.db.models import Sum
 from django.shortcuts import render, redirect
 
-from myapp.models import Vote, Too, quest
+from myapp.models import Vote, User, quest, Answer
 
 
-
-
+def take_user_info(request):
+    user_id = request.session['user_id']
+    if not user_id:
+        return redirect('index')
+    user = User.objects.get(id=user_id)
+    return user
 
 
 
@@ -12,21 +17,22 @@ from myapp.models import Vote, Too, quest
 def index(request):
     if request.method == 'POST':
         iname = request.POST.get('inputEmail3')
-        too = Too(name=iname)
-        print(too.id)
-        too.save()
-        too = Too.objects.get(name=iname)
-        print(too.id)
-        request.session['too_id'] = too.id
+        user = User(name=iname)
+        print(user.id)
+        user.save()
+        user = User.objects.get(name=iname)
+        print(user.id)
+        request.session['user_id'] = user.id
         print(request.session.items())
         context = {'name': iname}
         return redirect('first')
     return render(request, 'aut_in.html')
 
-def conte (a,b):
-    too = Too.objects.get(id=a)
+
+def conte(a,b):
+    user = User.objects.get(id=a)
     que1 = quest.objects.get(id=b)
-    rname = too.name
+    rname = user.name
     txfo = que1.info
     op1 = que1.option1
     op2 = que1.option2
@@ -34,13 +40,11 @@ def conte (a,b):
     context = {'name': rname, 'info': txfo, 'op1': op1, 'op2': op2, 'op3': op3}
     return context
 
+
 def first(request):
-    too_id = request.session['too_id']
-    if not too_id:
-        return redirect('index')
-    too = Too.objects.get(id=too_id)
+    user = take_user_info(request)
     if request.method == 'GET':
-        context = conte(too_id,1)
+        context = conte(user.id,1)
         return render(request, 'homePage.html', context)
     elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
@@ -50,22 +54,18 @@ def first(request):
             radio = 1
         elif radio == 'option3':
             radio = 2
-        too.first = radio
-        too.save()
+
+        answer = Answer(score=radio, page_number=1, user=user)
+        answer.save()
+
         return redirect('second')
     return render(request, 'homePage.html')
 
 
-
-
-
 def second(request):
-    too_id = request.session['too_id']
-    if not too_id:
-        return redirect('index')
-    too = Too.objects.get(id=too_id)
+    user = take_user_info(request)
     if request.method == 'GET':
-        context = conte(too_id,2)
+        context = conte(user.id,2)
         return render(request, 'too_page.html', context)
     elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
@@ -75,33 +75,27 @@ def second(request):
             radio = 3
         elif radio == 'options3':
             radio = 5
-        too.second = radio
-        too.resO = too.first + too.second
-        too.save()
-        if too.resO >= 5:
-            point = 'балов'
-        else:
-            point = 'бала'
-        context = {'all': too.resO, 'points': point, 'name': too.name}
-        return render(request, 'res2.html', context)
-    return render(request, 'too_page.html')
+        answer = Answer(score=radio, page_number=2, user=user)
+        answer.save()
 
-
+        return redirect('results')
+    return render(request, 'user_page.html')
 
 
 def results (request):
-    too_id = request.session['too_id']
-    if not too_id:
-        return redirect('index')
-    too = Too.objects.get(id=too_id)
-    if request.method == 'POST':
-        reth = request.POST.get('bt_res')
-        one = too.first
-        two = too.second
-        fname = too.name
-        context = {'one': one, 'two': two, 'name': fname}
-        return render (request,'res2.html', context)
-
+    user = take_user_info(request)
+    answers = Answer.objects.filter(user_id=user.id).all()
+    res = 0
+    for ans in answers:
+        res += ans.score
+    if res >= 5:
+        point = 'баллов'
+    else:
+        point = 'балла'
+    # ratings = User.objects.order_by('-rating')[:3]
+    ratings = User.objects.values('name').annotate(rating=Sum('answers__score')).order_by('-rating')[:3]
+    context = {'all': res, 'points': point, 'name': user.name, 'ratings': ratings}
+    return render(request, 'res2.html', context)
 
 
 def vote(request):
@@ -129,8 +123,8 @@ def vote(request):
     return render(request, 'votePage.html', context)
 
 # def results(request):
-#     too_id = request.session['too_id']
-#     if not too_id:
+#     user_id = request.session['user_id']
+#     if not user_id:
 #         return redirect('index')
 #     else:
 #         return render(request, 'results')

@@ -1,3 +1,4 @@
 from .vote import Vote
-from .too import Too
+from .user import User
+from .answer import Answer
 from .questions import quest
