@@ -7,7 +7,7 @@
             </div>
             <div
                 class="col-md-8">
-             Вы идете по набережной ,середина лета , пекучее солнце ,морской бриз, вдруг замечаете двух мальчиков одетых в рваные грязные вещи, они они смещаются в вашу сторону ускоряя шаг
+             {{ info }}
           </div>
           <div
                 class="col-md-2">
@@ -24,19 +24,19 @@
                 <div class="radio">
                       <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" {% if selected_value == 'option1' %}checked{% endif %}>
-                        убежать
+                        {{ op1 }}
                       </label>
                 </div>
                 <div class="radio">
                       <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" {% if selected_value == 'option2' %}checked{% endif %}>
-                        дать денег
+                        {{ op2 }}
                       </label>
                 </div>
                 <div class="radio">
                       <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" {% if selected_value == 'option3' %}checked{% endif %}>
-                        агресивно закрчать в сторону ребят
+                        {{ op3 }}
                       </label>
                 </div>
         <button class="btn btn-warning offset-3" type="submit">Далее&#9658</button>

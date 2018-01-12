@@ -5,13 +5,11 @@
         <div class="row">
             <div
                  class="col-md-2 ">
-             Выбирите правильный ответ
+             Представте ситуацию, и выбирите правильный ответ
             </div>
             <div
                 class="col-md-8">
-             Вы идете на вечеринку в честь дня рождения лучшего друга, шикарно одеты, уверенны в себе,прекрасное настроение,
-                в руках отличный подарок, о котором мечтал именинник,но выходя из метро по пути подарок изымают полицейские,
-                по необъяснимым причинам
+             {{ info }}
           </div>
           <div
                 class="col-md-2">
@@ -27,19 +25,19 @@
                 <div class="radio">
                       <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="options1">
-                        попробовать договориться с полицией
+                        {{ op1 }}
                       </label>
                 </div>
                 <div class="radio">
                       <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios2" value="options2">
-                        бежать в билжайший ларек
+                        {{ op2 }}
                       </label>
                 </div>
                 <div class="radio">
                       <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios3" value="options3">
-                          <u>www.rozetka.ua</u> - лучший сайт в мире(не реклама)
+                          {{ op3 }}
                       </label>
                 </div>
                 <button class="btn btn-warning offset-3" type="submit">результат &#128190</button>

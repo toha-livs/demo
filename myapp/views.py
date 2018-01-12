@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect
 
-from myapp.models import Vote,Too
+from myapp.models import Vote, Too, quest
+
+
+
+
+
+
 
 
 def index(request):
@@ -17,7 +23,16 @@ def index(request):
         return redirect('first')
     return render(request, 'aut_in.html')
 
-
+def conte (a,b):
+    too = Too.objects.get(id=a)
+    que1 = quest.objects.get(id=b)
+    rname = too.name
+    txfo = que1.info
+    op1 = que1.option1
+    op2 = que1.option2
+    op3 = que1.option3
+    context = {'name': rname, 'info': txfo, 'op1': op1, 'op2': op2, 'op3': op3}
+    return context
 
 def first(request):
     too_id = request.session['too_id']
@@ -25,8 +40,7 @@ def first(request):
         return redirect('index')
     too = Too.objects.get(id=too_id)
     if request.method == 'GET':
-        rname = too.name
-        context = {'name': rname}
+        context = conte(too_id,1)
         return render(request, 'homePage.html', context)
     elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
@@ -51,8 +65,7 @@ def second(request):
         return redirect('index')
     too = Too.objects.get(id=too_id)
     if request.method == 'GET':
-        rname = too.name
-        context = {'name': rname}
+        context = conte(too_id,2)
         return render(request, 'too_page.html', context)
     elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
@@ -63,16 +76,13 @@ def second(request):
         elif radio == 'options3':
             radio = 5
         too.second = radio
+        too.resO = too.first + too.second
         too.save()
-        one = int(too.first)
-        two = int(too.second)
-        oll = one + two
-        fname = too.name
-        if oll >= 5:
+        if too.resO >= 5:
             point = 'балов'
         else:
             point = 'бала'
-        context = {'one': one, 'two': two, 'all': oll,'points': point, 'name': fname}
+        context = {'all': too.resO, 'points': point, 'name': too.name}
         return render(request, 'res2.html', context)
     return render(request, 'too_page.html')
 
