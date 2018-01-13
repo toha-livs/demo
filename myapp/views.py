@@ -54,10 +54,8 @@ def first(request):
             radio = 1
         elif radio == 'option3':
             radio = 2
-
         answer = Answer(score=radio, page_number=1, user=user)
         answer.save()
-
         return redirect('second')
     return render(request, 'homePage.html')
 
@@ -77,9 +75,47 @@ def second(request):
             radio = 5
         answer = Answer(score=radio, page_number=2, user=user)
         answer.save()
-
-        return redirect('results')
+        return redirect('third')
     return render(request, 'user_page.html')
+
+
+def third(request):
+    user = take_user_info(request)
+    if request.method == 'GET':
+        context = conte(user.id,3)
+        return render(request, 'third_page.html', context)
+    elif request.method == 'POST':
+        radio = request.POST.get('optionsRadios')
+        if radio == 'options1':
+            radio = 4
+        elif radio == 'options2':
+            radio = 1
+        elif radio == 'options3':
+            radio = 2
+        print (radio)
+        answer = Answer(score=radio, page_number=3, user=user)
+        answer.save()
+        return redirect('fourth')
+    return render(request, 'too_page.html')
+
+
+def fourth(request):
+    user = take_user_info(request)
+    if request.method == 'GET':
+        context = conte(user.id,4)
+        return render(request, 'fourth_page.html', context)
+    elif request.method == 'POST':
+        radio = request.POST.get('optionsRadios')
+        if radio == 'options1':
+            radio = 2
+        elif radio == 'options2':
+            radio = 6
+        elif radio == 'options3':
+            radio = 4
+        answer = Answer(score=radio, page_number=4, user=user)
+        answer.save()
+        return redirect('results')
+    return render(request, 'too_page.html')
 
 
 def results (request):
