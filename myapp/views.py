@@ -47,7 +47,7 @@ def first(request):
         context = conte(user.id,1)
         return render(request, 'homePage.html', context)
     elif request.method == 'POST':
-        radio = request.POST.get('optionsRadios')
+        radio = request.POST.get('optionsRad')
         if radio == 'option1':
             radio = 4
         elif radio == 'option2':
