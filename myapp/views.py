@@ -44,10 +44,11 @@ def conte(a,b):
 def first(request):
     user = take_user_info(request)
     if request.method == 'GET':
-        context = conte(user.id,1)
+        context = conte(user.id, 1)
         return render(request, 'homePage.html', context)
     elif request.method == 'POST':
-        radio = request.POST.get('optionsRad')
+        radio = request.POST.get('optionsRadios')
+        print(radio)
         if radio == 'option1':
             radio = 4
         elif radio == 'option2':
@@ -118,11 +119,13 @@ def fourth(request):
     return render(request, 'too_page.html')
 
 
-def results (request):
+def results(request):
     user = take_user_info(request)
     answers = Answer.objects.filter(user_id=user.id).all()
+    print(answers)
     res = 0
     for ans in answers:
+        print(ans)
         res += ans.score
     if res >= 5:
         point = 'баллов'
