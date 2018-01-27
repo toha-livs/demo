@@ -1,17 +1,19 @@
+{% extends "wrapper.html" %}
+
 {% block content %}
     <div class="container-fluid static_txt" style="margin-top: 30px;">
         <div class="row">
             <div
-                 class="col-md-2 " id="stat_txt" style=" border-radius:10xp;">
+                 class="col-md-2 ">
              Представте ситуацию, и выбирите правильный ответ
             </div>
             <div
-                class="col-md-8" style="text-shadow:0 0 1px black, 0 0 1em black; color:black;font-size: 1em;">
+                class="col-md-8">
              {{ info }}
           </div>
           <div
                 class="col-md-2">
-             <h4><strong>Имя:</strong></h4> {{ name }}
+             <strong>Имя:</strong> {{ name }}
           </div>
         </div>
     </div>
@@ -20,30 +22,29 @@
         {% csrf_token %}
         <div class="row">
             <div class="col-md-10 offset-2">
-                        <p><em>ваши действия?</em></p>
                 <div class="radio">
                       <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="options1">
                         {{ op1 }}
                       </label>
                 </div>
                 <div class="radio">
                       <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="options2">
                         {{ op2 }}
                       </label>
                 </div>
                 <div class="radio">
                       <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                        {{ op3 }}
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="options3">
+                          {{ op3 }}
                       </label>
                 </div>
-        <button class="btn btn-danger  offset-3" type="submit" style="color: #FFDEAD; box-shadow: 0 0 15px 2px #000000;">Далее&#9658</button>
+                <button class="btn btn-danger offset-3" type="submit" style="color: #FFDEAD; box-shadow: 0 0 15px 2px #000000;">результат &#128190</button>
             </div>
         </div>
     </form>
-<div/>
+</div>
 <footer class="info" style="box-shadow: 0 0 15px 2px #000000;text-shadow: 0 -1px 1px #929798, 0 0 1em #929798; color:#929798;font-size: 1em">
     <h5>&copy все права защищены<small>2018</small></h5>
 </footer>

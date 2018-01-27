@@ -3,7 +3,7 @@
 {% block content %}
 <form action="" method="POST">
     {% csrf_token %}
-    <div class="container-fluid static_txt">
+    <div class="container-fluid static_txt" style="margin-top: 30px;">
         <div class="row">
                 <div
                      class="col-md-4">
@@ -11,7 +11,7 @@
                 </div>
                 <div
                     class="col-md-3 offset-5">
-                    максимальный результат: 9 балов
+                    максимальный результат: 18 балов
               </div>
               <div
                     class="col-md-4 offset-3">
@@ -28,7 +28,7 @@
         </div>
 <div/>
 <div class="container">
-    <table class="table" style="margin-top:80px;">
+    <table class="table" style="margin-top:30px;">
          <thead>
          <tr>
          <th>Место</th>
@@ -37,25 +37,25 @@
          </tr>
          </thead>
          <tbody>
-         <tr class="danger">
+         <tr>
          <td>Первое</td>
-         <td>Николайчук</td>
-         <td>ivan@example.com</td>
+         <td>{{ ratings.0.name }}</td>
+         <td>{{ ratings.0.rating }}</td>
          </tr>
          <tr>
          <td>Второе</td>
-         <td>Иванова</td>
-         <td>mary@example.com</td>
+         <td>{{ ratings.1.name }}</td>
+         <td>{{ ratings.1.rating }}</td>
          </tr>
          <tr>
          <td>Третье</td>
-         <td>Петренко</td>
-         <td>julia@example.com</td>
+         <td>{{ ratings.2.name }}</td>
+         <td>{{ ratings.2.rating }}</td>
          </tr>
          </tbody>
     </table>
 </div>
-<footer class="info">
+<footer class="info" style="box-shadow: 0 0 15px 2px #000000;text-shadow: 0 -1px 1px #929798, 0 0 1em #929798; color:#929798;font-size: 1em">
     <h5>&copy все права защищены<small>2018</small></h5>
 </footer>
 {% endblock %}

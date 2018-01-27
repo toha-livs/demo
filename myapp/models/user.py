@@ -1,9 +1,10 @@
 from django.db.models import Model, IntegerField, TextField
 
 
-class Too(Model):
+class User(Model):
     id = IntegerField(unique=True, primary_key=True)
     name = TextField(null=False)
-    first = IntegerField(null=True)
-    second = IntegerField(null=True)
-    resO = IntegerField(null=True)
+    # answers
+
+    def __str__(self):
+        return '<User id={} name={}>'.format(self.id, self.name)
