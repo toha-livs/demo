@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from myapp import views
+from myapp import views, api
 
 urlpatterns = [
     #path('admin/pages/3', )
@@ -28,4 +28,8 @@ urlpatterns = [
     path('results', views.results, name='results'),
     path('third', views.third, name='third'),
     path('fourth', views.fourth, name='fourth'),
+
+    # API
+    path('api/results', api.results, name='api_results'),
+    path('api/quest1', api.quest1, name='api_quest1'),
 ]

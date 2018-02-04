@@ -11,4 +11,4 @@ class quest(Model):
 
 
     def __str__(self):
-        return self.title
+        return '<title={} info={} option1={} option2={} option3={}>' .format(self.title, self.info, self.option1, self.option2, self.option3)
