@@ -64,7 +64,7 @@ def first(request):
 def second(request):
     user = take_user_info(request)
     if request.method == 'GET':
-        context = conte(user.id,2)
+        context = conte(user.id, 2)
         return render(request, 'too_page.html', context)
     elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
@@ -83,7 +83,7 @@ def second(request):
 def third(request):
     user = take_user_info(request)
     if request.method == 'GET':
-        context = conte(user.id,3)
+        context = conte(user.id, 3)
         return render(request, 'third_page.html', context)
     elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')
@@ -103,7 +103,7 @@ def third(request):
 def fourth(request):
     user = take_user_info(request)
     if request.method == 'GET':
-        context = conte(user.id,4)
+        context = conte(user.id, 4)
         return render(request, 'fourth_page.html', context)
     elif request.method == 'POST':
         radio = request.POST.get('optionsRadios')

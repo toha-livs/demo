@@ -4,7 +4,7 @@
 <form action="" method="POST">
     {% csrf_token %}
     <form>
-      <div class="form-group">
+      <div class="form-group" style="margin-top:50px;">
         <label class="cod-md-2 offset-4" for="exampleInputEmail1"><strong>Name:</strong></label>
         <input type="text" name="inputEmail3" class="form-control col-md-3 offset-4" id="exampleInputEmail1" placeholder="name">
       </div>
@@ -12,10 +12,10 @@
           <label class="cod-md-2 offset-4" for="exampleInputPassword1"><strong>Password:</strong></label>
         <input type="password" class="form-control col-md-3 offset-4" id="exampleInputPassword1" placeholder="Password">
       </div>
-      <button type="submit" style="color:#FFDEAD;" class="btn btn-danger cod-md-2 offset-4">вперед</button>
+      <button type="submit" style=" box-shadow: 0 0 15px 2px #000000;color:#FFDEAD;" class="btn btn-danger cod-md-2 offset-4">вперед</button>
     </form>
 </form>
-<footer class="info">
+<footer class="info"style="box-shadow: 0 0 15px 2px #000000;text-shadow: 0 -1px 1px #929798, 0 0 1em #929798; color:#929798;font-size: 1em">
     <h5>&copy все права защищены<small>2018</small></h5>
 </footer>
 {% endblock %}
