@@ -32,4 +32,7 @@ urlpatterns = [
     # API
     path('api/results', api.results, name='api_results'),
     path('api/quest1', api.quest1, name='api_quest1'),
+    path('api/quest2', api.quest2, name='api_quest2'),
+    path('api/quest3', api.quest3, name='api_quest3'),
+    path('api/quest4', api.quest4, name='api_quest4'),
 ]

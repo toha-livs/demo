@@ -29,7 +29,7 @@ def index(request):
     return render(request, 'aut_in.html')
 
 
-def conte(a,b):
+def conte(a, b):
     user = User.objects.get(id=a)
     que1 = quest.objects.get(id=b)
     rname = user.name
